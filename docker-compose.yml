@@ -1,0 +1,7 @@
+﻿name: brand-ms
+services:
+  brand-ms:
+   build:
+    context: .
+   ports:
+    - 7000:7000

@@ -18,14 +18,16 @@ namespace BrandMicroservice
 
             builder.Configuration.AddJsonFile("appsettings.json");
 
-            builder.Services.AddCors((options) =>
+            builder.Services.AddCors(options =>
             {
-                options.AddPolicy("BrandMSCors", builder => {
-                    builder.WithOrigins(["http://localhost:4200"])
-                    .AllowAnyMethod()
-                    .AllowAnyHeader();
+                options.AddPolicy("BrandMSCors", policy =>
+                {
+                    policy.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
                 });
             });
+
 
             builder.Services.AddScoped<IMakeService, MakeService>();
             builder.Services.AddScoped<IModelService, ModelService>();
